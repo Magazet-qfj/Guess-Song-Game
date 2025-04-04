@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm85g861y5a0r"]
+
+[ext_resource type="Script" uid="uid://bws1g60tf0aq8" path="res://Script/main_page.gd" id="1_pb6yc"]
+[ext_resource type="Texture2D" uid="uid://dqxl8kdps4g1b" path="res://Icon/start_new_game.svg" id="2_gnepl"]
+[ext_resource type="Texture2D" uid="uid://bp66lws7v52u4" path="res://Icon/select_file.svg" id="4_gagev"]
+[ext_resource type="Texture2D" uid="uid://csd7bqgpwgsl4" path="res://Icon/choose_song_list.svg" id="4_yyldh"]
+
+[node name="MainPage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pb6yc")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.431373, 0.529412, 0.729412, 1)
+
+[node name="Information" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 512.0
+grow_vertical = 2
+
+[node name="FileInfo" type="Label" parent="Information"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "FileName: JKpapa
+SongCount: 114514"
+
+[node name="ButtonGroup" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -512.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="StartGame" type="Button" parent="ButtonGroup"]
+layout_mode = 2
+offset_top = 64.0
+offset_right = 288.0
+offset_bottom = 132.0
+text = "Start Game"
+icon = ExtResource("2_gnepl")
+flat = true
+
+[node name="CreateNewList" type="Button" parent="ButtonGroup"]
+layout_mode = 0
+offset_top = 192.0
+offset_right = 448.0
+offset_bottom = 260.0
+text = "Create New Song List"
+icon = ExtResource("4_yyldh")
+flat = true
+
+[node name="LoadSongList" type="Button" parent="ButtonGroup"]
+offset_top = 320.0
+offset_right = 352.0
+offset_bottom = 388.0
+text = "Load Song List"
+icon = ExtResource("4_gagev")
+flat = true
+
+[connection signal="pressed" from="ButtonGroup/CreateNewList" to="." method="GotoCreateNewList"]
+[connection signal="pressed" from="ButtonGroup/LoadSongList" to="." method="GotoCreateNewList"]

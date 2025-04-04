@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cg6myyve3p2fy"
-path="res://.godot/imported/guess_artist.svg-d8fd33c0315b7abb02ab820c447c948a.ctex"
+path="res://.godot/imported/artist.svg-3f24d1919a3d4c35db6a83e23cb3e7d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Icon/guess_artist.svg"
-dest_files=["res://.godot/imported/guess_artist.svg-d8fd33c0315b7abb02ab820c447c948a.ctex"]
+source_file="res://Icon/artist.svg"
+dest_files=["res://.godot/imported/artist.svg-3f24d1919a3d4c35db6a83e23cb3e7d0.ctex"]
 
 [params]
 

@@ -1,0 +1,244 @@
+[gd_scene load_steps=8 format=3 uid="uid://js2bjife1wf7"]
+
+[ext_resource type="Script" uid="uid://dkht36v4mokab" path="res://Script/create_new_list.gd" id="1_csbyk"]
+[ext_resource type="Texture2D" uid="uid://mkf10y7rbltx" path="res://Icon/home.svg" id="1_e6tke"]
+[ext_resource type="Texture2D" uid="uid://bbqh5dx8g1svq" path="res://Icon/add_list.svg" id="2_jp7gf"]
+[ext_resource type="Texture2D" uid="uid://bacm243rax246" path="res://Icon/add_song.svg" id="4_br7du"]
+[ext_resource type="Texture2D" uid="uid://bp66lws7v52u4" path="res://Icon/select_file.svg" id="4_jpq7f"]
+[ext_resource type="Texture2D" uid="uid://dsrt78civic0f" path="res://Icon/save_list.svg" id="5_0lvjo"]
+[ext_resource type="Texture2D" uid="uid://csd7bqgpwgsl4" path="res://Icon/choose_song_list.svg" id="7_jpq7f"]
+
+[node name="CreateList" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_csbyk")
+metadata/_edit_vertical_guides_ = [448.0]
+metadata/_edit_horizontal_guides_ = [-64.0]
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.430798, 0.529415, 0.727723, 1)
+
+[node name="Home" type="Button" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 256.0
+offset_bottom = 100.0
+text = "Return"
+icon = ExtResource("1_e6tke")
+flat = true
+
+[node name="CreateSongList" type="Button" parent="."]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 192.0
+offset_right = 414.0
+offset_bottom = 260.0
+text = "Create Song List"
+icon = ExtResource("2_jp7gf")
+flat = true
+
+[node name="CreateArtistList" type="Button" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 320.0
+offset_right = 415.0
+offset_bottom = 388.0
+text = "Load Song List"
+icon = ExtResource("4_jpq7f")
+flat = true
+
+[node name="InfoEdit" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -800.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="SongName" type="Control" parent="InfoEdit"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_top = 96.0
+offset_bottom = 96.0
+grow_horizontal = 0
+
+[node name="SongNameEdit" type="LineEdit" parent="InfoEdit/SongName"]
+layout_mode = 0
+offset_left = -544.0
+offset_top = 64.0
+offset_right = -32.0
+offset_bottom = 128.0
+placeholder_text = "Input Song Name"
+alignment = 1
+flat = true
+
+[node name="SongNameLabel" type="Label" parent="InfoEdit/SongName"]
+layout_mode = 0
+offset_left = -800.0
+offset_top = 64.0
+offset_right = -544.0
+offset_bottom = 128.0
+text = "Song Name:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SongArtist" type="Control" parent="InfoEdit"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_top = 96.0
+offset_bottom = 96.0
+grow_horizontal = 0
+
+[node name="SongNameEdit" type="LineEdit" parent="InfoEdit/SongArtist"]
+layout_mode = 0
+offset_left = -544.0
+offset_top = 160.0
+offset_right = -32.0
+offset_bottom = 224.0
+placeholder_text = "Input Artist Name"
+alignment = 1
+flat = true
+
+[node name="SongNameLabel" type="Label" parent="InfoEdit/SongArtist"]
+layout_mode = 0
+offset_left = -800.0
+offset_top = 160.0
+offset_right = -544.0
+offset_bottom = 224.0
+text = "Song Artist:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SongListName" type="Control" parent="InfoEdit"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_top = 96.0
+offset_bottom = 96.0
+grow_horizontal = 0
+
+[node name="SongNameEdit" type="LineEdit" parent="InfoEdit/SongListName"]
+layout_mode = 0
+offset_left = -544.0
+offset_top = -32.0
+offset_right = -32.0
+offset_bottom = 32.0
+placeholder_text = "Input List Name"
+alignment = 1
+flat = true
+
+[node name="SongNameLabel" type="Label" parent="InfoEdit/SongListName"]
+layout_mode = 0
+offset_left = -800.0
+offset_top = -32.0
+offset_right = -544.0
+offset_bottom = 32.0
+text = "List Name:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AddSong" type="Button" parent="InfoEdit"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -112.0
+offset_right = 160.0
+offset_bottom = -44.0
+grow_vertical = 0
+text = "Add"
+icon = ExtResource("4_br7du")
+flat = true
+
+[node name="SaveList" type="Button" parent="InfoEdit"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 192.0
+offset_top = -112.0
+offset_right = 352.0
+offset_bottom = -44.0
+grow_vertical = 0
+text = "Save"
+icon = ExtResource("5_0lvjo")
+flat = true
+
+[node name="LastSong" type="Button" parent="InfoEdit"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 386.0
+offset_top = -112.0
+offset_right = 546.0
+offset_bottom = -44.0
+grow_vertical = 0
+text = "Last "
+icon = ExtResource("7_jpq7f")
+flat = true
+
+[node name="NextSong" type="Button" parent="InfoEdit"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 576.0
+offset_top = -112.0
+offset_right = 768.0
+offset_bottom = -44.0
+grow_vertical = 0
+text = "Next"
+icon = ExtResource("7_jpq7f")
+flat = true
+
+[node name="SongIndex" type="Label" parent="InfoEdit"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 512.0
+offset_right = 352.0
+offset_bottom = 576.0
+text = "Song Index: 0"
+vertical_alignment = 1
+
+[node name="SongCount" type="Label" parent="InfoEdit"]
+offset_left = 386.0
+offset_top = 512.0
+offset_right = 706.0
+offset_bottom = 576.0
+text = "Song Count: 0"
+vertical_alignment = 1
+
+[node name="PathDialog" type="FileDialog" parent="."]
+title = "Choose Save Path"
+initial_position = 2
+size = Vector2i(1152, 648)
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 2
+filters = PackedStringArray("*.json")
+
+[connection signal="pressed" from="Home" to="." method="ReturnToHomePage"]
+[connection signal="pressed" from="InfoEdit/AddSong" to="." method="AddNewSong"]
+[connection signal="pressed" from="InfoEdit/SaveList" to="." method="SaveSongList"]
+[connection signal="pressed" from="InfoEdit/LastSong" to="." method="EditLastSong"]
+[connection signal="pressed" from="InfoEdit/NextSong" to="." method="EditNextSong"]
+[connection signal="dir_selected" from="PathDialog" to="." method="DirSelected"]

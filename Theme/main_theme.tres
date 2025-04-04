@@ -1,3 +1,14 @@
-[gd_resource type="Theme" format=3 uid="uid://jtx32qahu2uk"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://jtx32qahu2uk"]
+
+[ext_resource type="FontFile" uid="uid://clsy0d4skrbot" path="res://Font/ChillRoundFRegular.ttf" id="1_qrgx4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qrgx4"]
 
 [resource]
+default_font = ExtResource("1_qrgx4")
+default_font_size = 32
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 10
+Button/styles/focus = SubResource("StyleBoxEmpty_qrgx4")
+Label/constants/line_spacing = 10
+Label/constants/outline_size = 10

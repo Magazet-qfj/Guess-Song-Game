@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsrt78civic0f"
-path="res://.godot/imported/Misc-icons-iconstore-04.svg-e2239ab38c258dc9b84b8b4ac3bbf25d.ctex"
+uid="uid://dqxl8kdps4g1b"
+path="res://.godot/imported/start_new_game.svg-6b499864252c4224868beaec3fb5f1eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Icon/Misc-icons-iconstore-04.svg"
-dest_files=["res://.godot/imported/Misc-icons-iconstore-04.svg-e2239ab38c258dc9b84b8b4ac3bbf25d.ctex"]
+source_file="res://Icon/start_new_game.svg"
+dest_files=["res://.godot/imported/start_new_game.svg-6b499864252c4224868beaec3fb5f1eb.ctex"]
 
 [params]
 
