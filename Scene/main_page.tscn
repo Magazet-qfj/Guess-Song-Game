@@ -30,7 +30,7 @@ anchor_bottom = 1.0
 offset_right = 512.0
 grow_vertical = 2
 
-[node name="FileInfo" type="Label" parent="Information"]
+[node name="ListName" type="Label" parent="Information"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,11 +38,25 @@ anchor_bottom = 1.0
 offset_left = 32.0
 offset_top = 32.0
 offset_right = -32.0
-offset_bottom = -48.0
+offset_bottom = -624.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "FileName: JKpapa
-SongCount: 114514"
+text = "List Name: "
+vertical_alignment = 1
+
+[node name="SongCount" type="Label" parent="Information"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 128.0
+offset_right = -32.0
+offset_bottom = -528.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Song Count: "
+vertical_alignment = 1
 
 [node name="ButtonGroup" type="Control" parent="."]
 layout_mode = 1
@@ -73,6 +87,7 @@ icon = ExtResource("4_yyldh")
 flat = true
 
 [node name="LoadSongList" type="Button" parent="ButtonGroup"]
+layout_mode = 0
 offset_top = 320.0
 offset_right = 352.0
 offset_bottom = 388.0
@@ -80,5 +95,17 @@ text = "Load Song List"
 icon = ExtResource("4_gagev")
 flat = true
 
+[node name="PathDialog" type="FileDialog" parent="."]
+auto_translate_mode = 1
+title = "Open a File"
+initial_position = 2
+size = Vector2i(1152, 648)
+exclusive = false
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.json")
+
 [connection signal="pressed" from="ButtonGroup/CreateNewList" to="." method="GotoCreateNewList"]
-[connection signal="pressed" from="ButtonGroup/LoadSongList" to="." method="GotoCreateNewList"]
+[connection signal="pressed" from="ButtonGroup/LoadSongList" to="." method="LoadSongList"]
+[connection signal="file_selected" from="PathDialog" to="." method="FileSelected"]

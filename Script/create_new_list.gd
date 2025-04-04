@@ -14,6 +14,7 @@ extends Control
 var songIndex = 0
 var songCount = 0
 var songList = []
+var list = {}
 var savePath = ""
 
 
@@ -40,7 +41,10 @@ func SaveSongList() -> void:
 	var json = JSON.new()
 	var listName = ListNameEdit.text
 	var file = FileAccess.open(savePath + "/" + listName + ".json", FileAccess.WRITE)
-	json = JSON.stringify(songList)
+	list["listName"] = listName
+	list["songCount"] = songCount
+	list["songList"] = songList
+	json = JSON.stringify(list)
 	file.store_string(json)
 	file.close()
 

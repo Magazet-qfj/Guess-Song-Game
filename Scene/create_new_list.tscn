@@ -220,6 +220,7 @@ text = "Song Index: 0"
 vertical_alignment = 1
 
 [node name="SongCount" type="Label" parent="InfoEdit"]
+layout_mode = 0
 offset_left = 386.0
 offset_top = 512.0
 offset_right = 706.0
@@ -228,9 +229,10 @@ text = "Song Count: 0"
 vertical_alignment = 1
 
 [node name="PathDialog" type="FileDialog" parent="."]
-title = "Choose Save Path"
+title = "Choose save path"
 initial_position = 2
 size = Vector2i(1152, 648)
+exclusive = false
 ok_button_text = "Select Current Folder"
 file_mode = 2
 access = 2
