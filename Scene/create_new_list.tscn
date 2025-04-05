@@ -16,7 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_csbyk")
-metadata/_edit_vertical_guides_ = [448.0]
+metadata/_edit_vertical_guides_ = [480.0]
 metadata/_edit_horizontal_guides_ = [-64.0]
 
 [node name="Background" type="ColorRect" parent="."]
@@ -28,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.430798, 0.529415, 0.727723, 1)
 
-[node name="Home" type="Button" parent="."]
+[node name="Return" type="Button" parent="."]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 32.0
@@ -38,17 +38,22 @@ text = "Return"
 icon = ExtResource("1_e6tke")
 flat = true
 
-[node name="CreateSongList" type="Button" parent="."]
-layout_mode = 0
-offset_left = 62.0
-offset_top = 192.0
-offset_right = 414.0
-offset_bottom = 260.0
+[node name="OperateButtonGroup" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 720.0
+
+[node name="CreateSongList" type="Button" parent="OperateButtonGroup"]
+layout_mode = 1
+offset_left = 64.0
+offset_top = 224.0
+offset_right = 416.0
+offset_bottom = 292.0
 text = "Create Song List"
 icon = ExtResource("2_jp7gf")
 flat = true
 
-[node name="CreateArtistList" type="Button" parent="."]
+[node name="LoadSongList" type="Button" parent="OperateButtonGroup"]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 320.0
@@ -59,6 +64,7 @@ icon = ExtResource("4_jpq7f")
 flat = true
 
 [node name="InfoEdit" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -229,18 +235,31 @@ text = "Song Count: 0"
 vertical_alignment = 1
 
 [node name="PathDialog" type="FileDialog" parent="."]
-title = "Choose save path"
+title = "Open a Directory"
 initial_position = 2
 size = Vector2i(1152, 648)
 exclusive = false
 ok_button_text = "Select Current Folder"
 file_mode = 2
 access = 2
+
+[node name="FileSelectDialog" type="FileDialog" parent="."]
+auto_translate_mode = 1
+title = "Open a File"
+initial_position = 2
+size = Vector2i(1152, 648)
+exclusive = false
+ok_button_text = "Open"
+file_mode = 0
+access = 2
 filters = PackedStringArray("*.json")
 
-[connection signal="pressed" from="Home" to="." method="ReturnToHomePage"]
+[connection signal="pressed" from="Return" to="." method="ReturnToHomePage"]
+[connection signal="pressed" from="OperateButtonGroup/CreateSongList" to="." method="CreateSongList"]
+[connection signal="pressed" from="OperateButtonGroup/LoadSongList" to="." method="LoadSongList"]
 [connection signal="pressed" from="InfoEdit/AddSong" to="." method="AddNewSong"]
 [connection signal="pressed" from="InfoEdit/SaveList" to="." method="SaveSongList"]
 [connection signal="pressed" from="InfoEdit/LastSong" to="." method="EditLastSong"]
 [connection signal="pressed" from="InfoEdit/NextSong" to="." method="EditNextSong"]
 [connection signal="dir_selected" from="PathDialog" to="." method="DirSelected"]
+[connection signal="file_selected" from="FileSelectDialog" to="." method="FileSelected"]

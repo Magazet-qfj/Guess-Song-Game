@@ -1,0 +1,149 @@
+[gd_scene load_steps=4 format=3 uid="uid://8r1wltoj6epb"]
+
+[ext_resource type="Script" uid="uid://duln4ohju2i4w" path="res://Script/game_page.gd" id="1_tox6e"]
+[ext_resource type="Texture2D" uid="uid://mkf10y7rbltx" path="res://Icon/home.svg" id="2_es7t5"]
+[ext_resource type="Texture2D" uid="uid://cg6myyve3p2fy" path="res://Icon/artist.svg" id="3_es7t5"]
+
+[node name="GamePage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tox6e")
+metadata/_edit_vertical_guides_ = [960.0]
+metadata/_edit_horizontal_guides_ = [0.0]
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.430798, 0.529415, 0.727723, 1)
+
+[node name="Return" type="Button" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 256.0
+offset_bottom = 100.0
+text = "Return"
+icon = ExtResource("2_es7t5")
+flat = true
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 128.0
+offset_right = 960.0
+offset_bottom = -16.0
+grow_vertical = 2
+same_column_width = true
+
+[node name="RightButtonGroup" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -320.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="IsShowArtist" type="Button" parent="RightButtonGroup"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = 96.0
+grow_horizontal = 0
+toggle_mode = true
+text = "Show Artist"
+icon = ExtResource("3_es7t5")
+flat = true
+expand_icon = true
+
+[node name="ColumnCountLabel" type="Label" parent="RightButtonGroup"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_top = 128.0
+offset_right = -32.0
+offset_bottom = 192.0
+grow_horizontal = 0
+text = "Column Count:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColumnCount" type="LineEdit" parent="RightButtonGroup"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_top = 192.0
+offset_right = -32.0
+offset_bottom = 256.0
+grow_horizontal = 0
+text = "1"
+placeholder_text = "At least 1"
+alignment = 1
+max_length = 1
+flat = true
+
+[node name="OpenLetterLabel" type="Label" parent="RightButtonGroup"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_top = 288.0
+offset_right = -32.0
+offset_bottom = 352.0
+grow_horizontal = 0
+text = "Open Letter:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OpenLetter" type="LineEdit" parent="RightButtonGroup"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_top = 352.0
+offset_right = -32.0
+offset_bottom = 416.0
+grow_horizontal = 0
+placeholder_text = "Input a letter"
+alignment = 1
+max_length = 1
+flat = true
+
+[node name="ConfirmButton" type="Button" parent="RightButtonGroup"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_top = 416.0
+offset_right = -64.0
+offset_bottom = 480.0
+grow_horizontal = 0
+text = "Confirm"
+flat = true
+
+[connection signal="pressed" from="Return" to="." method="ReturnToHomePage"]
+[connection signal="toggled" from="RightButtonGroup/IsShowArtist" to="." method="IsShowArtistToggled"]
+[connection signal="text_submitted" from="RightButtonGroup/ColumnCount" to="." method="ColumnCountChanged"]
+[connection signal="pressed" from="RightButtonGroup/ConfirmButton" to="." method="OpenALetter"]

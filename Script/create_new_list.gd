@@ -8,7 +8,13 @@ extends Control
 @onready var IndexText = $InfoEdit/SongIndex
 @onready var CountText = $InfoEdit/SongCount
 
+@onready var OperateButtonGroup = $OperateButtonGroup
+@onready var InfoEdit = $InfoEdit
 @onready var PathDialog = $PathDialog
+@onready var FileSelectDialog = $FileSelectDialog
+
+
+signal FileParseFinished
 
 
 var songIndex = 0
@@ -32,6 +38,8 @@ func AddNewSong() -> void:
 	else:
 		songList[songIndex - 1] = song
 		print("Rewrite successfully!")
+	SongNameEdit.text = ""
+	SongArtistEdit.text = ""
 	print("Now songCount & songIndex is " + str(songCount) + " " + str(songIndex))
 
 
@@ -80,3 +88,42 @@ func EditNextSong() -> void:
 
 func ReturnToHomePage() -> void:
 	get_tree().change_scene_to_file("res://Scene/main_page.tscn")
+
+
+func CreateSongList() -> void:
+	OperateButtonGroup.hide()
+	InfoEdit.show()
+
+
+func FileSelected(path: String) -> void:
+	var file = FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		FileAccess.get_open_error()
+	else:
+		print("File read successfully!")
+	var json = JSON.new()
+	print("List parsing.")
+	var json_string = file.get_as_text()
+	file.close()
+	var parse_result = json.parse(json_string)
+	if parse_result != OK:
+		print("JSON Parse Error: ", json.get_error_message(), " at line ", json.get_error_line())
+	else:
+		print(parse_result)
+	var data = json.parse_string(json_string)
+	GlobalManager.data = data
+	emit_signal("FileParseFinished")
+
+
+func LoadSongList() -> void:
+	FileSelectDialog.show()
+	await FileParseFinished
+	var data = GlobalManager.data
+	songList = data["songList"]
+	songCount = String.num(data["songCount"], 0)
+	ListNameEdit.text = data["listName"]
+	SongNameEdit.text = "Read list succesfully!"
+	SongArtistEdit.text = "Click \"Next\" to edit the list."
+	songIndex = 0
+	OperateButtonGroup.hide()
+	InfoEdit.show()

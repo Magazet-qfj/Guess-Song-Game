@@ -4,9 +4,14 @@ extends Control
 @onready var PathDialog = $PathDialog
 @onready var ListNameLabel = $Information/ListName
 @onready var SongCountLabel = $Information/SongCount
+@onready var StartGameButton = $ButtonGroup/StartGame
 
 
 signal FileParseFinished
+
+
+func _ready() -> void:
+	StartGameButton.hide()
 
 
 func GotoCreateNewList() -> void:
@@ -28,7 +33,7 @@ func FileSelected(path: String) -> void:
 		print("JSON Parse Error: ", json.get_error_message(), " at line ", json.get_error_line())
 	else:
 		print(parse_result)
-	var data = json.parse_string(json_string)
+	var data = JSON.parse_string(json_string)
 	GlobalManager.data = data
 	emit_signal("FileParseFinished")
 
@@ -38,4 +43,9 @@ func LoadSongList() -> void:
 	await FileParseFinished
 	ListNameLabel.text += GlobalManager.data["listName"]
 	SongCountLabel.text += String.num(GlobalManager.data["songCount"], 0)
-	
+	StartGameButton.show()
+
+
+
+func StartGame() -> void:
+	get_tree().change_scene_to_file("res://Scene/game_page.tscn")

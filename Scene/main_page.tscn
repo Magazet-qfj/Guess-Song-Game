@@ -1,9 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm85g861y5a0r"]
+[gd_scene load_steps=7 format=3 uid="uid://bm85g861y5a0r"]
 
 [ext_resource type="Script" uid="uid://bws1g60tf0aq8" path="res://Script/main_page.gd" id="1_pb6yc"]
 [ext_resource type="Texture2D" uid="uid://dqxl8kdps4g1b" path="res://Icon/start_new_game.svg" id="2_gnepl"]
 [ext_resource type="Texture2D" uid="uid://bp66lws7v52u4" path="res://Icon/select_file.svg" id="4_gagev"]
 [ext_resource type="Texture2D" uid="uid://csd7bqgpwgsl4" path="res://Icon/choose_song_list.svg" id="4_yyldh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yyldh"]
+font_size = 64
+font_color = Color(0.459192, 0.631946, 1, 1)
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.25098)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gagev"]
+font_size = 36
+font_color = Color(0, 1, 1, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="MainPage" type="Control"]
 layout_mode = 3
@@ -13,6 +28,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pb6yc")
+metadata/_edit_vertical_guides_ = [736.0]
+metadata/_edit_horizontal_guides_ = [-160.0]
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -36,9 +53,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 32.0
-offset_top = 32.0
+offset_top = 256.0
 offset_right = -32.0
-offset_bottom = -624.0
+offset_bottom = -400.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "List Name: "
@@ -50,12 +67,34 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 32.0
-offset_top = 128.0
+offset_top = 352.0
 offset_right = -32.0
-offset_bottom = -528.0
+offset_bottom = -304.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Song Count: "
+vertical_alignment = 1
+
+[node name="GameTitle" type="Label" parent="Information"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 36.0
+offset_right = 672.0
+offset_bottom = 128.0
+text = "Guess Song Game"
+label_settings = SubResource("LabelSettings_yyldh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Developer" type="Label" parent="Information"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 128.0
+offset_right = 640.0
+offset_bottom = 192.0
+text = "1.0.0 by Magazet"
+label_settings = SubResource("LabelSettings_gagev")
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ButtonGroup" type="Control" parent="."]
@@ -70,27 +109,27 @@ grow_vertical = 2
 
 [node name="StartGame" type="Button" parent="ButtonGroup"]
 layout_mode = 2
-offset_top = 64.0
+offset_top = 320.0
 offset_right = 288.0
-offset_bottom = 132.0
+offset_bottom = 388.0
 text = "Start Game"
 icon = ExtResource("2_gnepl")
 flat = true
 
 [node name="CreateNewList" type="Button" parent="ButtonGroup"]
 layout_mode = 0
-offset_top = 192.0
+offset_top = 64.0
 offset_right = 448.0
-offset_bottom = 260.0
+offset_bottom = 132.0
 text = "Create New Song List"
 icon = ExtResource("4_yyldh")
 flat = true
 
 [node name="LoadSongList" type="Button" parent="ButtonGroup"]
 layout_mode = 0
-offset_top = 320.0
+offset_top = 192.0
 offset_right = 352.0
-offset_bottom = 388.0
+offset_bottom = 260.0
 text = "Load Song List"
 icon = ExtResource("4_gagev")
 flat = true
@@ -106,6 +145,7 @@ file_mode = 0
 access = 2
 filters = PackedStringArray("*.json")
 
+[connection signal="pressed" from="ButtonGroup/StartGame" to="." method="StartGame"]
 [connection signal="pressed" from="ButtonGroup/CreateNewList" to="." method="GotoCreateNewList"]
 [connection signal="pressed" from="ButtonGroup/LoadSongList" to="." method="LoadSongList"]
 [connection signal="file_selected" from="PathDialog" to="." method="FileSelected"]
