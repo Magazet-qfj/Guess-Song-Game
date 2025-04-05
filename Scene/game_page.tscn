@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://8r1wltoj6epb"]
+[gd_scene load_steps=6 format=3 uid="uid://8r1wltoj6epb"]
 
 [ext_resource type="Script" uid="uid://duln4ohju2i4w" path="res://Script/game_page.gd" id="1_tox6e"]
 [ext_resource type="Texture2D" uid="uid://mkf10y7rbltx" path="res://Icon/home.svg" id="2_es7t5"]
 [ext_resource type="Texture2D" uid="uid://cg6myyve3p2fy" path="res://Icon/artist.svg" id="3_es7t5"]
+[ext_resource type="Texture2D" uid="uid://dqxl8kdps4g1b" path="res://Icon/start_new_game.svg" id="4_ralyh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ralyh"]
+line_spacing = 0.0
+font_size = 36
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="GamePage" type="Control"]
 layout_mode = 3
@@ -36,14 +43,26 @@ flat = true
 
 [node name="ItemList" type="ItemList" parent="."]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 32.0
 offset_top = 128.0
-offset_right = 960.0
+offset_right = -352.0
 offset_bottom = -16.0
+grow_horizontal = 2
 grow_vertical = 2
 same_column_width = true
+
+[node name="LetterLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 32.0
+offset_right = 960.0
+offset_bottom = 128.0
+text = "Opened Letter: "
+label_settings = SubResource("LabelSettings_ralyh")
+autowrap_mode = 3
 
 [node name="RightButtonGroup" type="Control" parent="."]
 layout_mode = 1
@@ -77,9 +96,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -288.0
-offset_top = 128.0
+offset_top = 448.0
 offset_right = -32.0
-offset_bottom = 192.0
+offset_bottom = 512.0
 grow_horizontal = 0
 text = "Column Count:"
 horizontal_alignment = 1
@@ -91,9 +110,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -288.0
-offset_top = 192.0
+offset_top = 512.0
 offset_right = -32.0
-offset_bottom = 256.0
+offset_bottom = 576.0
 grow_horizontal = 0
 text = "1"
 placeholder_text = "At least 1"
@@ -107,9 +126,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -288.0
-offset_top = 288.0
+offset_top = 224.0
 offset_right = -32.0
-offset_bottom = 352.0
+offset_bottom = 288.0
 grow_horizontal = 0
 text = "Open Letter:"
 horizontal_alignment = 1
@@ -121,9 +140,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -288.0
-offset_top = 352.0
+offset_top = 288.0
 offset_right = -32.0
-offset_bottom = 416.0
+offset_bottom = 352.0
 grow_horizontal = 0
 placeholder_text = "Input a letter"
 alignment = 1
@@ -136,9 +155,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -256.0
-offset_top = 416.0
+offset_top = 352.0
 offset_right = -64.0
-offset_bottom = 480.0
+offset_bottom = 416.0
 grow_horizontal = 0
 text = "Confirm"
 flat = true
@@ -149,11 +168,11 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -288.0
-offset_top = 512.0
+offset_top = 576.0
 offset_right = -32.0
-offset_bottom = 576.0
+offset_bottom = 640.0
 grow_horizontal = 0
-text = "Set Width:"
+text = "Set Fixed Width:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -163,25 +182,33 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -288.0
-offset_top = 576.0
+offset_top = 640.0
 offset_right = -32.0
-offset_bottom = 640.0
+offset_bottom = 704.0
 grow_horizontal = 0
 placeholder_text = "Recommand 0"
 alignment = 1
 flat = true
 
-[node name="LetterLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 256.0
-offset_top = 32.0
-offset_right = 928.0
-offset_bottom = 128.0
-text = "Opened Letter:
-"
+[node name="RestartGame" type="Button" parent="RightButtonGroup"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_top = 128.0
+offset_right = -32.0
+offset_bottom = 192.0
+grow_horizontal = 0
+toggle_mode = true
+text = "Restart Game"
+icon = ExtResource("4_ralyh")
+flat = true
+expand_icon = true
 
 [connection signal="pressed" from="Return" to="." method="ReturnToHomePage"]
 [connection signal="toggled" from="RightButtonGroup/IsShowArtist" to="." method="IsShowArtistToggled"]
 [connection signal="text_submitted" from="RightButtonGroup/ColumnCount" to="." method="ColumnCountChanged"]
 [connection signal="pressed" from="RightButtonGroup/ConfirmButton" to="." method="OpenALetter"]
 [connection signal="text_submitted" from="RightButtonGroup/SetWidth" to="." method="SetWidth"]
+[connection signal="pressed" from="RightButtonGroup/RestartGame" to="." method="RestartGame"]

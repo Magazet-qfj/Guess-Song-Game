@@ -252,7 +252,6 @@ exclusive = false
 ok_button_text = "Open"
 file_mode = 0
 access = 2
-filters = PackedStringArray(".json")
 
 [connection signal="pressed" from="Return" to="." method="ReturnToHomePage"]
 [connection signal="pressed" from="OperateButtonGroup/CreateSongList" to="." method="CreateSongList"]

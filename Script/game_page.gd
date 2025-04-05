@@ -59,12 +59,18 @@ func ColumnCountChanged(new_text: String) -> void:
 
 func OpenALetter() -> void:
 	var letter = OpenLetterEdit.text
-	LetterLabel.text += letter + " , "
+	LetterLabel.text += letter + ", "
 	if letter:
 		openedLetter.append(letter)
 	ShowSongList()
 
 
 func SetWidth(new_text: String) -> void:
-	var width = float(new_text)
+	var width = 0
+	if new_text:
+		width = float(new_text)
 	MainList.fixed_column_width = width
+
+
+func RestartGame() -> void:
+	get_tree().reload_current_scene()

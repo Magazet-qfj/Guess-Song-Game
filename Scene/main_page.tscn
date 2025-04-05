@@ -143,7 +143,6 @@ exclusive = false
 ok_button_text = "Open"
 file_mode = 0
 access = 2
-filters = PackedStringArray(".json")
 
 [connection signal="pressed" from="ButtonGroup/StartGame" to="." method="StartGame"]
 [connection signal="pressed" from="ButtonGroup/CreateNewList" to="." method="GotoCreateNewList"]
