@@ -28,16 +28,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.430798, 0.529415, 0.727723, 1)
 
-[node name="Return" type="Button" parent="."]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 256.0
-offset_bottom = 100.0
-text = "Return"
-icon = ExtResource("1_e6tke")
-flat = true
-
 [node name="OperateButtonGroup" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 480.0
@@ -234,6 +224,15 @@ offset_bottom = 576.0
 text = "Song Count: 0"
 vertical_alignment = 1
 
+[node name="Return" type="Button" parent="."]
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 256.0
+offset_bottom = 100.0
+text = "Return"
+icon = ExtResource("1_e6tke")
+flat = true
+
 [node name="PathDialog" type="FileDialog" parent="."]
 title = "Open a Directory"
 initial_position = 2
@@ -253,12 +252,12 @@ ok_button_text = "Open"
 file_mode = 0
 access = 2
 
-[connection signal="pressed" from="Return" to="." method="ReturnToHomePage"]
 [connection signal="pressed" from="OperateButtonGroup/CreateSongList" to="." method="CreateSongList"]
 [connection signal="pressed" from="OperateButtonGroup/LoadSongList" to="." method="LoadSongList"]
 [connection signal="pressed" from="InfoEdit/AddSong" to="." method="AddNewSong"]
 [connection signal="pressed" from="InfoEdit/SaveList" to="." method="SaveSongList"]
 [connection signal="pressed" from="InfoEdit/LastSong" to="." method="EditLastSong"]
 [connection signal="pressed" from="InfoEdit/NextSong" to="." method="EditNextSong"]
+[connection signal="pressed" from="Return" to="." method="ReturnToHomePage"]
 [connection signal="dir_selected" from="PathDialog" to="." method="DirSelected"]
 [connection signal="file_selected" from="FileSelectDialog" to="." method="FileSelected"]
