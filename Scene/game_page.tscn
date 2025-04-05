@@ -130,7 +130,7 @@ offset_top = 224.0
 offset_right = -32.0
 offset_bottom = 288.0
 grow_horizontal = 0
-text = "Open Letter:"
+text = "Open A Letter:"
 horizontal_alignment = 1
 vertical_alignment = 1
 

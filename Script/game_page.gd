@@ -24,10 +24,10 @@ func ShowSongList() -> void:
 		var songArtist = song["songArtist"]
 
 		for i in range(songName.length()):
-			if !openedLetter.has(songName[i]):
+			if !openedLetter.has(songName[i]) && songName[i] != " ":
 				songName[i] = "*"
 		for i in range(songArtist.length()):
-			if !openedLetter.has(songArtist[i]):
+			if !openedLetter.has(songArtist[i]) && songArtist[i] != " ":
 				songArtist[i] = "*"
 
 		var itemText = String.num(songIndex + 1, 0) + ". " + songName

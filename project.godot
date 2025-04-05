@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Guess Song Game"
+config/version="1.0.0"
 run/main_scene="uid://bm85g861y5a0r"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://dpthjx52qyp16"
 
 [autoload]
 
