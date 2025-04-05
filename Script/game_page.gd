@@ -18,8 +18,8 @@ func ShowSongList() -> void:
 	MainList.clear()
 	var data = GlobalManager.data
 	
+	var songIndex = 1
 	for song in data["songList"]:
-		var songIndex = song["index"]
 		var songName = song["songName"]
 		var songArtist = song["songArtist"]
 
@@ -30,10 +30,11 @@ func ShowSongList() -> void:
 			if !openedLetter.has(songArtist[i]) && songArtist[i] != " ":
 				songArtist[i] = "*"
 
-		var itemText = String.num(songIndex + 1, 0) + ". " + songName
+		var itemText = String.num(songIndex, 0) + ". " + songName
 		if isShowArtist:
 			itemText += " - " + songArtist
 		MainList.add_item(itemText)
+		songIndex += 1
 
 
 func ReturnToHomePage() -> void:
@@ -61,7 +62,8 @@ func OpenALetter() -> void:
 	var letter = OpenLetterEdit.text
 	LetterLabel.text += letter + ", "
 	if letter:
-		openedLetter.append(letter)
+		openedLetter.append(letter.to_upper())
+		openedLetter.append(letter.to_lower())
 	ShowSongList()
 
 
