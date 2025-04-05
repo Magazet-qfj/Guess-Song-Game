@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tox6e")
 metadata/_edit_vertical_guides_ = [960.0]
-metadata/_edit_horizontal_guides_ = [0.0]
+metadata/_edit_horizontal_guides_ = [128.0]
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -143,7 +143,45 @@ grow_horizontal = 0
 text = "Confirm"
 flat = true
 
+[node name="SetWidthLabel" type="Label" parent="RightButtonGroup"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_top = 512.0
+offset_right = -32.0
+offset_bottom = 576.0
+grow_horizontal = 0
+text = "Set Width:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SetWidth" type="LineEdit" parent="RightButtonGroup"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_top = 576.0
+offset_right = -32.0
+offset_bottom = 640.0
+grow_horizontal = 0
+placeholder_text = "Recommand 0"
+alignment = 1
+flat = true
+
+[node name="LetterLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 32.0
+offset_right = 928.0
+offset_bottom = 128.0
+text = "Opened Letter:
+"
+
 [connection signal="pressed" from="Return" to="." method="ReturnToHomePage"]
 [connection signal="toggled" from="RightButtonGroup/IsShowArtist" to="." method="IsShowArtistToggled"]
 [connection signal="text_submitted" from="RightButtonGroup/ColumnCount" to="." method="ColumnCountChanged"]
 [connection signal="pressed" from="RightButtonGroup/ConfirmButton" to="." method="OpenALetter"]
+[connection signal="text_submitted" from="RightButtonGroup/SetWidth" to="." method="SetWidth"]

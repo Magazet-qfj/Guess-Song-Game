@@ -17,8 +17,8 @@ extends Control
 signal FileParseFinished
 
 
-var songIndex = 0
-var songCount = 0
+var songIndex : int = 0
+var songCount : int = 0
 var songList = []
 var list = {}
 var savePath = ""
@@ -120,7 +120,7 @@ func LoadSongList() -> void:
 	await FileParseFinished
 	var data = GlobalManager.data
 	songList = data["songList"]
-	songCount = String.num(data["songCount"], 0)
+	songCount = int(data["songCount"])
 	ListNameEdit.text = data["listName"]
 	SongNameEdit.text = "Read list succesfully!"
 	SongArtistEdit.text = "Click \"Next\" to edit the list."

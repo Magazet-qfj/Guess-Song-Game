@@ -2,6 +2,7 @@ extends Control
 
 
 @onready var MainList = $ItemList
+@onready var LetterLabel = $LetterLabel
 @onready var IsShowArtist = $RightButtonGroup/IsShowArtist
 @onready var OpenLetterEdit = $RightButtonGroup/OpenLetter
 
@@ -58,6 +59,12 @@ func ColumnCountChanged(new_text: String) -> void:
 
 func OpenALetter() -> void:
 	var letter = OpenLetterEdit.text
+	LetterLabel.text += letter + " , "
 	if letter:
 		openedLetter.append(letter)
 	ShowSongList()
+
+
+func SetWidth(new_text: String) -> void:
+	var width = float(new_text)
+	MainList.fixed_column_width = width
